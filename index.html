@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Shadow DOM</title>
+  </head>
+  <body>
+    <spinner-thing>
+      <img src="Thinking.jpg" alt="The Thinker" />
+    </spinner-thing>
+    <script>
+      const template = document.createElement('template')
+      template.innerHTML =
+        '<style>:host { display: inline-block }</style><slot />'
+      class SpinnerThing extends HTMLElement {
+        constructor() {
+          super()
+          this.attachShadow({
+            mode: 'open'
+          })
+        }
+        connectedCallback() {
+          this.shadowRoot.appendChild(template.content.cloneNode(true))
+          this.animate(
+            [
+              { transform: 'scale(0) rotate(0deg)' },
+              { transform: 'scale(1) rotate(1080deg)' }
+            ],
+            {
+              duration: 1000,
+              easing: 'ease-out'
+            }
+          )
+        }
+      }
+      customElements.define('spinner-thing', SpinnerThing)
+    </script>
+  </body>
+</html>
