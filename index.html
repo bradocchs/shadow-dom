@@ -5,10 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Shadow DOM</title>
+    <style>
+      spinner-thing img {
+        max-width: 50vw;
+      }
+    </style>
   </head>
   <body>
     <spinner-thing>
-      <img src="Thinking.jpg" alt="The Thinker" />
+      <img src="Thinking.jpg" alt="The Thinker Jr." />
+    </spinner-thing>
+    <spinner-thing>
+      <img src="JimSpencer.jpg" alt="The Thinker" />
     </spinner-thing>
     <script>
       const template = document.createElement('template')
